@@ -22,7 +22,6 @@ def slim(request):
 
     name = img.name
 
-    print 'name:', name
 
     ext = name.split('.')[-1].lower()
 
