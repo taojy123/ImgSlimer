@@ -20,6 +20,9 @@ def slim(request):
     size = request.POST.get('size')
     img = request.FILES.get('img')
 
+    if not img:
+        return HttpResponse(u'未选择图片，请后退重试')
+
     name = img.name
 
 
