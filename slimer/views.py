@@ -21,7 +21,7 @@ def slim(request):
     img = request.FILES.get('img')
 
     if not img:
-        return HttpResponse(u'未选择图片，请后退重试')
+        return HttpResponse(u'<script>alert("未选择图片，请后退重试");location.href="/"</script>')
 
     name = img.name
 
