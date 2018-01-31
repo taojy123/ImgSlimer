@@ -75,7 +75,7 @@ def slim(request):
         name = '%s.%s' % (uuid.uuid4().hex, ext)
         open('./static/img/%s' % name, 'wb').write(data)
         url = '%s/static/img/%s' % (request.get_host(), name)
-        return url
+        return HttpResponse(url)
 
     else:
         return HttpResponseBadRequest('invalid kind')
