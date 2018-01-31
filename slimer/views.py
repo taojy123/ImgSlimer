@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import StringIO
+import uuid
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
@@ -17,14 +18,14 @@ def index(request):
 
 
 def slim(request):
-    size = request.POST.get('size')
     img = request.FILES.get('img')
+    size = request.POST.get('size')
+    kind = request.POST.get('kind', 'img')
 
     if not img:
         return HttpResponse(u'<script>alert("未选择图片，请后退重试");location.href="/"</script>')
 
     name = img.name
-
 
     ext = name.split('.')[-1].lower()
 
@@ -63,8 +64,18 @@ def slim(request):
 
     s.seek(0)
     data = s.read()
-    response = HttpResponse(data)
-    response['Content-Type'] = 'application/octet-stream'
-    response['Content-Disposition'] = 'attachment;filename="%s"' % name.encode('gbk')
 
-    return response
+    if kind == 'img':
+        response = HttpResponse(data)
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="%s"' % name.encode('gbk')
+        return response
+
+    elif kind == 'url':
+        name = '%s.%s' % (uuid.uuid4().hex, ext)
+        open('./static/img/%s' % name, 'wb').write(data)
+        url = '%s/static/img/%s' % (request.get_host(), name)
+        return url
+
+    else:
+        return HttpResponseBadRequest('invalid kind')
