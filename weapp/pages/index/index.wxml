@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <input bindblur="sizeInput" placeholder="填写瘦身目标（MB）"></input>
+    <button bindtap="slim">传图瘦身</button>
+  </view>
+
+
+  <view class="footer">
+    <text class="footer-text">
+      PS: 是图片瘦身(体积变小),而不是图片中的你瘦身哦~
+    </text>
+  </view>
+  
+</view>
