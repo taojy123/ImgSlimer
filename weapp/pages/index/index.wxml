@@ -2,7 +2,7 @@
 <view class="container">
   
   <view class="usermotto">
-    <input bindblur="sizeInput" placeholder="先定瘦身目标（MB）"></input>
+    <input bindblur="sizeInput" placeholder="先定瘦身目标（KB）"></input>
     <button bindtap="slim">再传图瘦身</button>
   </view>
 
