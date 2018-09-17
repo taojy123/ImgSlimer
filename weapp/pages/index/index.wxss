@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 }
 
 .userinfo-avatar {
@@ -16,8 +17,8 @@
   color: #aaa;
 }
 
-.usermotto {
-  margin-top: 100px;
+.usermotto input {
+  margin-bottom: 20px;
 }
 
 .footer {

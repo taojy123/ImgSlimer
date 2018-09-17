@@ -134,7 +134,7 @@ Page({
           duration: 5000
         })
         wx.uploadFile({
-          url: 'https://txu3.taojy123.cn/slim/',
+          url: 'https://tools.athenagu.com/slim/',
           filePath: filePath,
           name: 'img',
           formData: {  

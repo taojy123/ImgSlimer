@@ -5,12 +5,13 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
 	"appid": "wxd333cc89f5c6ea19",
-	"projectname": "wxdemo",
+	"projectname": "ImgSlimer",
 	"condition": {
 		"search": {
 			"current": -1,
